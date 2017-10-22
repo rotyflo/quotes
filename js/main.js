@@ -10,7 +10,7 @@ $(document).ready(function() {
   // 'Get Quote' button functionality
   $("#get-quote").on("click", function() {
     // Animate while waiting for quote
-    $("#get-quote").html("<i class='fa fa-refresh fa-spin'></i> Random Quote");
+    $("#get-quote").html("<i class='fa fa-refresh fa-spin'></i> Get Quote");
 
     $.getJSON("https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&_jsonp=?", function(json) {
       // Received quote, end animation
