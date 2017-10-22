@@ -1,6 +1,6 @@
 $(document).ready(function() {
   // Fetch quote on page load
-  $.getJSON("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&_jsonp=?", function(json) {
+  $.getJSON("https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&_jsonp=?", function(json) {
     $("#quote").html(
       "<p>" + json[0].content + "</p>" +
       "<p> -" + json[0].title + "</p>"
@@ -12,7 +12,7 @@ $(document).ready(function() {
     // Animate while waiting for quote
     $("#get-quote").html("<i class='fa fa-refresh fa-spin'></i> Random Quote");
 
-    $.getJSON("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&_jsonp=?", function(json) {
+    $.getJSON("https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&_jsonp=?", function(json) {
       // Received quote, end animation
       $("#get-quote").html("<i class='fa fa-refresh'></i> Get Quote");
 
