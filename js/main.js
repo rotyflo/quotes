@@ -1,31 +1,28 @@
 $(document).ready(function() {
   // Fetch quote on page load
-  $.getJSON("https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&_jsonp=?", function(json) {
-    $("#quote").html(
-      "<p>" + json[0].content + "</p>" +
-      "<p> -" + json[0].title + "</p>"
-    );
+  getQuote();
+
+  $("#get-quote").on("click", function() {
+    getQuote();
   });
 
-  // 'Get Quote' button functionality
-  $("#get-quote").on("click", function() {
-    // Animate while waiting for quote
-    $("#get-quote").html("<i class='fa fa-refresh fa-spin'></i> Get Quote");
+  $("#tweet").on("click", function() {
+    let quote = $("#quote").text();
+    let author = $("#author").text();
+
+    window.open(`https://twitter.com/intent/tweet?text=${quote}${author}`);
+  });
+
+  function getQuote() {
+    $("#quote").html("<i class='fa fa-cog fa-spin'></i> Loading...");
+    $("#author").html("");
 
     $.getJSON("https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&_jsonp=?", function(json) {
-      // Received quote, end animation
-      $("#get-quote").html("<i class='fa fa-refresh'></i> Get Quote");
+      let quote = json[0].content;
+      let author = "-" + json[0].title;
 
-      // Insert quote
-      $("#quote").html(
-        "<p>" + json[0].content + "</p>" +
-        "<p> -" + json[0].title + "</p>"
-      );
+      $("#quote").html(quote);
+      $("#author").html(author);
     });
-  });
-
-  // 'Tweet' button functionality
-  $("#tweet").on("click", function() {
-    window.open("https://twitter.com/intent/tweet?text=" + $("#quote").text());
-  });
+  }
 });
