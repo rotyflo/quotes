@@ -1,28 +1,68 @@
 body {
   text-align: center;
-  background-color: #607D8B;
-  font-size: 24px;
+  font-size: 20px;
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+#title {
+  background-color: #9E9E9E;
   color: white;
+  margin: 0;
+  padding: 20px 20px 40px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 #quote {
   background-color: white;
-  padding: 20px;
+  padding: 0 20px;
   max-width: 700px;
-  margin: auto;
+  margin: 20px auto;
   color: black;
-  box-shadow: inset 5px 5px 5px rgba(0, 0, 0, 0.2);
+  position: relative;
+  bottom: 20px;
 }
 
 button {
   background-color: #03A9F4;
   border-style: none;
+  border-radius: 2px;
   color: white;
   font-size: 24px;
   margin: 10px;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
   padding: 4px 24px;
+  position: relative;
+  bottom: 30px;
+  animation-name: down;
+  animation-duration: 0.2s;
+}
+
+button:hover {
+  box-shadow: 0 10px 5px rgba(0, 0, 0, 0.2);
+  animation-name: up;
+  animation-duration: 0.2s;
+}
+
+@keyframes up {
+  from {box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);}
+  to {box-shadow: 0 10px 5px rgba(0, 0, 0, 0.2);}
+}
+
+@keyframes down {
+  from {box-shadow: 0 10px 5px rgba(0, 0, 0, 0.2);}
+  to {box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);}
+}
+
+#footer {
+  background-color: #9E9E9E;
+  color: white;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  margin: 0;
+  padding: 10px 0;
 }
 
 a {
