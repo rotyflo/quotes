@@ -8,21 +8,22 @@ $(document).ready(function() {
 
   $("#tweet").on("click", function() {
     let quote = $("#quote").text();
-    let author = $("#author").text();
 
     window.open(`https://twitter.com/intent/tweet?text=${quote}${author}`);
   });
 
   function getQuote() {
     $("#quote").html("<i class='fa fa-cog fa-spin'></i> Loading...");
-    $("#author").html("");
 
-    $.getJSON("https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1&_jsonp=?", function(json) {
-      let quote = json[0].content;
-      let author = "-" + json[0].title;
+    $.getJSON("https://www.reddit.com/r/quotes/top.json", function(json) {
+      let i = getQuoteIndex();
+      let quote = json.data.children[i].data.title;
 
       $("#quote").html(quote);
-      $("#author").html(author);
     });
+  }
+
+  function getQuoteIndex() {
+    return Math.round(Math.random() * 25);
   }
 });
