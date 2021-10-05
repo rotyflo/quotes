@@ -9,31 +9,22 @@
   <title>Random Quote Machine</title>
 
   <link rel="stylesheet" href="css/main.css">
-  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <!-- <link rel="stylesheet" href="css/font-awesome.min.css"> -->
   <script src="js/jquery-3.2.1.min.js"></script>
   <script src="js/main.js"></script>
 </head>
 
-<body>
-  <h1 id="title">
-    <i class="fa fa-quote-left"></i> Random Quote Machine
-    <i class="fa fa-quote-right"></i>
-  </h1>
+<body class="container">
+  <header>
+    <h1 id="title">Random Quote Machine</h1>
+  </header>
 
-  <button id="get-quote">
-    <i id="refresh" class="fa fa-refresh"></i> Get Quote</button>
-  <button id="tweet">
-    <i class="fa fa-twitter"></i> Tweet</button>
-
-  <div>
+  <main>
     <p id="quote"></p>
-  </div>
-
-  <div id="footer">
-    <a href="https://github.com/rotyflo" target="_blank"><i class="fa fa-github-alt"></i> github &nbsp;</a>
-    <a href="https://twitter.com/rotyflo" target="_blank"> <i class="fa fa-twitter"></i> twitter &nbsp;</a>
-    <a href="https://rotyflo.github.io"><i class="fa fa-home"></i> home </a>
-  </div>
+    
+    <button id="get-quote" class="btn btn-primary">Get Quote</button>
+    <button id="tweet" class="btn btn-primary">Tweet</button>
+  </main>
 </body>
 
 </html>
