@@ -1,12 +1,12 @@
-$(document).ready(function() {
+$(document).ready(function () {
   // Fetch quote on page load
   getQuote();
 
-  $("#get-quote").on("click", function() {
+  $("#get-quote").on("click", function () {
     getQuote();
   });
 
-  $("#tweet").on("click", function() {
+  $("#tweet").on("click", function () {
     let quote = $("#quote").text();
 
     window.open(`https://twitter.com/intent/tweet?text=${quote}`);
@@ -15,15 +15,19 @@ $(document).ready(function() {
   function getQuote() {
     $("#quote").html("<i class='fa fa-cog fa-spin'></i> Loading...");
 
-    $.getJSON("https://www.reddit.com/r/quotes/top.json", function(json) {
-      let i = getQuoteIndex();
-      let quote = json.data.children[i].data.title;
+    fetch("https://type.fit/api/quotes")
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        let i = getQuoteIndex(data.length);
 
-      $("#quote").html(quote);
-    });
+        $("#quote").html(data[i].text);
+        $("#author").html(data[i].author);
+      });
   }
 
-  function getQuoteIndex() {
-    return Math.round(Math.random() * 25);
+  function getQuoteIndex(maxNumber) {
+    return Math.round(Math.random() * maxNumber);
   }
 });
