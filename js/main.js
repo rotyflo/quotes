@@ -22,8 +22,8 @@ $(document).ready(function () {
       .then(function (data) {
         let i = getQuoteIndex(data.length);
 
-        $("#quote").html(data[i].text);
-        $("#author").html(data[i].author);
+        $("#quote").html(`"${data[i].text}"`);
+        $("#author").html(`<i>- ${data[i].author}</i>`);
       });
   }
 
