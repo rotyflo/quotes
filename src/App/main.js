@@ -1,5 +1,6 @@
-$(document).ready(function () {
-  // Fetch quote on page load
+import $ from 'jquery';
+
+$(function () {
   getQuote();
 
   $("#get-quote").on("click", function () {
