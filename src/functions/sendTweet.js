@@ -1,6 +1,6 @@
-import $ from 'jquery';
-
-export default function sendTweet() {
-  let quote = $("#quote").text();
-  window.open(`https://twitter.com/intent/tweet?text=${quote}`);
+// (event) prevents 'window.open' on page load
+const sendTweet = (quote) => (event) => {
+	window.open(`https://twitter.com/intent/tweet?text=${quote}`);
 }
+
+export default sendTweet;
