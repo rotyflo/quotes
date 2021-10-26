@@ -36,10 +36,10 @@ export default class Quote extends React.Component {
 		let i = getQuoteIndex(this.state.listOfQuotes.length);
 		let chosenQuote = this.state.listOfQuotes[i];
 		
-		this.setState((state) => ({
+		this.setState({
 			quote: `"${chosenQuote.text}"`,
 			author: `- ${chosenQuote.author}`
-		}));
+		});
 	}
 
 	loading() {
