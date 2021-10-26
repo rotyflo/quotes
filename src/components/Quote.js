@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import getQuoteIndex from "../functions/getQuoteIndex";
 import sendTweet from "../functions/sendTweet";
 
@@ -6,31 +6,41 @@ export default class Quote extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			listOfQuotes: {},
 			quote: "",
 			author: ""
 		}
 		
-		this.getQuote = this.getQuote.bind(this);
+		this.getRandomQuote = this.getRandomQuote.bind(this);
 	}
 
 	// Get quote on page load
 	componentDidMount() {
-		this.getQuote();
+		this.fetchQuotes();
 	}
 
-	getQuote() {
+	fetchQuotes() {
 		this.loading();
 
 		fetch("https://type.fit/api/quotes")
 			.then(response => response.json())
 			.then(data => {
-				let i = getQuoteIndex(data.length);
 				this.setState({
-					quote: `"${data[i].text}"`,
-					author: `- ${data[i].author}`
+					listOfQuotes: data
 				});
+				this.getRandomQuote();
 			});
 	};
+
+	getRandomQuote() {
+		let i = getQuoteIndex(this.state.listOfQuotes.length);
+		let chosenQuote = this.state.listOfQuotes[i];
+		
+		this.setState((state) => ({
+			quote: `"${chosenQuote.text}"`,
+			author: `- ${chosenQuote.author}`
+		}));
+	}
 
 	loading() {
 		this.setState({
@@ -46,7 +56,7 @@ export default class Quote extends React.Component {
 			<div>
 				<p id="quote">{this.state.quote}</p>
 				<p id="author">{this.state.author}</p>
-				<button onClick={this.getQuote} className="btn btn-default">Get Quote</button>
+				<button onClick={this.getRandomQuote} className="btn btn-default">Get Quote</button>
 				<button onClick={sendTweet(tweet)} className="btn btn-primary">Tweet</button>
 			</div>
 		);
