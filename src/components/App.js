@@ -3,11 +3,14 @@ import './App.css';
 import Quote from './Quote';
 import Title from './Title';
 
-export default function App() {
-  return (
-    <div className="container">
-      <Title />
-      <Quote />
-    </div>
-  );
+export default class App extends React.Component {
+  render() {
+    return (
+      <div className="container">
+        <Title />
+        <Quote />
+        <p>{this.props.messages[0]}</p>
+      </div>
+    );
+  }
 }
