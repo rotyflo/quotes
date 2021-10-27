@@ -1,64 +1,57 @@
-import React from "react";
-import getQuoteIndex from "../functions/getQuoteIndex";
-import sendTweet from "../functions/sendTweet";
+import React from 'react';
+import { connect } from 'react-redux';
+import writeQuotesToState from '../actions/writeQuotesToState';
+import setRandomIndex from '../actions/setRandomIndex';
 
-export default class Quote extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			listOfQuotes: {},
-			quote: "",
-			author: ""
-		}
-		
-		this.getRandomQuote = this.getRandomQuote.bind(this);
-	}
-
+class Quote extends React.Component {
 	// Get quote on page load
 	componentDidMount() {
-		this.fetchQuotes();
-	}
-
-	fetchQuotes() {
-		this.loading();
-
-		fetch("https://type.fit/api/quotes")
+		fetch('https://type.fit/api/quotes')
 			.then(response => response.json())
 			.then(data => {
-				this.setState({
-					listOfQuotes: data
-				});
-				this.getRandomQuote();
+				this.props.writeQuotesToState(data);
+				this.props.setRandomIndex();
 			});
-	};
-
-	getRandomQuote() {
-		let i = getQuoteIndex(this.state.listOfQuotes.length);
-		let chosenQuote = this.state.listOfQuotes[i];
-		
-		this.setState({
-			quote: `"${chosenQuote.text}"`,
-			author: `- ${chosenQuote.author}`
-		});
 	}
 
-	loading() {
-		this.setState({
-			quote: "loading...",
-			author: ""
-		});
+	sendTweet(tweet) {
+		window.open(`https://twitter.com/intent/tweet?text=${tweet}`);
 	}
 
 	render() {
-		let tweet = `${this.state.quote} - ${this.state.author}`;
+		let i = this.props.index;
+		let text = this.props.quotes[i].text;
+		let author = this.props.quotes[i].author;
+		let tweet = `${text} - ${author}`;
 
 		return (
 			<div>
-				<p id="quote">{this.state.quote}</p>
-				<p id="author">{this.state.author}</p>
-				<button onClick={this.getRandomQuote} className="btn btn-default">Get Quote</button>
-				<button onClick={sendTweet(tweet)} className="btn btn-primary">Tweet</button>
+				<p id="quote"><em>"{text}"</em></p>
+				<p id="author">- {author}</p>
+				<button onClick={() => { this.props.setRandomIndex() }} className="btn btn-default">Get Quote</button>
+				<button onClick={() => { this.sendTweet(tweet) }} className="btn btn-primary">Tweet</button>
 			</div>
 		);
 	}
 }
+
+// connect to store
+function mapStateToProps(state) {
+	return {
+		quotes: state.quotes,
+		index: state.index
+	}
+}
+
+function mapDispatchToProps(dispatch) {
+	return {
+		writeQuotesToState: (data) => {
+			dispatch(writeQuotesToState(data));
+		},
+		setRandomIndex: () => {
+			dispatch(setRandomIndex());
+		}
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Quote);

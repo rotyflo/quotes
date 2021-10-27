@@ -1,4 +1,5 @@
-import { createStore } from 'redux';
-import messageReducer from "../reducers";
+import { createStore, applyMiddleware } from 'redux';
+import quoteReducer from '../reducers';
+import thunk from 'redux-thunk';
 
-export default createStore(messageReducer);
+export default createStore(quoteReducer, applyMiddleware(thunk));
