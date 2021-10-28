@@ -1,9 +1,20 @@
-@import url("https://rotyflo.github.io/css/terminal.css");
+#quote-box, header {
+	text-align: center;
+}
 
-.container {
-  text-align: center;
+#quote-container {
+	position: relative;
+  min-height: 100px;
+}
+
+#quote {
+	font-style: italic;
+}
+
+#tweet-quote {
+	height: 38px;
 }
 
 #title {
-  display: inline-block;
+	display: inline-block;
 }
