@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import writeQuotesToState from '../actions/writeQuotesToState';
 import setRandomIndex from '../actions/setRandomIndex';
 
-const twitterURL = 'https://twitter.com/intent/tweet?text=lsdkfj';
+const twitterURL = 'https://twitter.com/intent/tweet?text=';
 const apiURL = 'https://type.fit/api/quotes';
 
 class Quote extends React.Component {
