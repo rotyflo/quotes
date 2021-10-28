@@ -3,10 +3,13 @@ import { connect } from 'react-redux';
 import writeQuotesToState from '../actions/writeQuotesToState';
 import setRandomIndex from '../actions/setRandomIndex';
 
+const twitterURL = 'https://twitter.com/intent/tweet?text=lsdkfj';
+const apiURL = 'https://type.fit/api/quotes';
+
 class Quote extends React.Component {
 	// Get quote on page load
 	componentDidMount() {
-		fetch('https://type.fit/api/quotes')
+		fetch(apiURL)
 			.then(response => response.json())
 			.then(data => {
 				this.props.writeQuotesToState(data);
@@ -14,22 +17,38 @@ class Quote extends React.Component {
 			});
 	}
 
-	sendTweet(tweet) {
-		window.open(`https://twitter.com/intent/tweet?text=${tweet}`);
-	}
-
 	render() {
 		let i = this.props.index;
 		let text = this.props.quotes[i].text;
 		let author = this.props.quotes[i].author;
+		author = author ? author : 'Unknown';
 		let tweet = `${text} - ${author}`;
 
 		return (
-			<div>
-				<p id="quote"><em>"{text}"</em></p>
-				<p id="author">- {author}</p>
-				<button onClick={() => { this.props.setRandomIndex() }} className="btn btn-default">Get Quote</button>
-				<button onClick={() => { this.sendTweet(tweet) }} className="btn btn-primary">Tweet</button>
+			<div id="quote-box">
+				<div id="quote-container">
+					<p id="quote">"{text}"</p>
+					<p id="author">- {author}</p>
+				</div>
+				<div>
+					<button 
+						id="new-quote"
+						className="btn btn-default" 
+						onClick={() => { this.props.setRandomIndex() }}
+					>
+						Get Quote
+					</button>
+
+					<a
+						id="tweet-quote"
+						className="btn btn-primary"
+						href={twitterURL + tweet}
+						target="_blank"
+						rel="noreferrer"
+					>
+						Tweet
+					</a>
+				</div>
 			</div>
 		);
 	}
