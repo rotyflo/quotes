@@ -2,19 +2,23 @@
 	text-align: center;
 }
 
-#quote-container {
-	position: relative;
-  min-height: 100px;
+.terminal-card {
+  min-height: 200px;
+	margin-top: 10px;
 }
 
 #quote {
 	font-style: italic;
 }
 
+#author {
+	text-align: right;
+}
+
 #tweet-quote {
 	height: 38px;
 }
 
-#title {
-	display: inline-block;
+#buttons {
+	text-align: right;
 }

@@ -26,14 +26,18 @@ class Quote extends React.Component {
 
 		return (
 			<div id="quote-box">
-				<div id="quote-container">
-					<p id="quote">"{text}"</p>
-					<p id="author">- {author}</p>
+				<div className="terminal-card">
+					<header>Random Quote Machine</header>
+					<div id="quote">
+						<p>"{text}"</p>
+						<p id="author">- {author}</p>
+						</div>
 				</div>
-				<div>
-					<button 
+
+				<div id="buttons">
+					<button
 						id="new-quote"
-						className="btn btn-default" 
+						className="btn btn-default"
 						onClick={() => { this.props.setRandomIndex() }}
 					>
 						Get Quote
