@@ -31,18 +31,10 @@ class Quote extends React.Component {
 					<div id="quote">
 						<p>"{text}"</p>
 						<p id="author">- {author}</p>
-						</div>
+					</div>
 				</div>
 
 				<div id="buttons">
-					<button
-						id="new-quote"
-						className="btn btn-default"
-						onClick={() => { this.props.setRandomIndex() }}
-					>
-						Get Quote
-					</button>
-
 					<a
 						id="tweet-quote"
 						className="btn btn-primary"
@@ -52,6 +44,13 @@ class Quote extends React.Component {
 					>
 						Tweet
 					</a>
+					<button
+						id="new-quote"
+						className="btn btn-default"
+						onClick={() => { this.props.setRandomIndex() }}
+					>
+						Get Quote
+					</button>
 				</div>
 			</div>
 		);
