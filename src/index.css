@@ -3,7 +3,7 @@
 }
 
 .terminal-card {
-	min-height: calc(400px - 20vw);
+	min-height: calc(400px - 18vw);
 	margin-top: 10px;
 }
 
