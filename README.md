@@ -5,7 +5,7 @@ Find random quotes and make them tweetable
 
 ## How To Run
 ### Online
-Go to rotyflo.github.io/quotes
+Go to [rtflores.com/quotes](rotyflo.github.io/quotes)
 
 ### Locally
 ```
