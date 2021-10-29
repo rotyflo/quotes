@@ -1,24 +1,37 @@
-#quote-box, header {
+#quote-box {
 	text-align: center;
 }
 
-.terminal-card {
-	min-height: calc(400px - 18vw);
-	margin-top: 10px;
-}
-
 #quote {
+	font-size: 1.2rem;
+	line-height: 1.8rem;
 	font-style: italic;
 }
 
 #author {
+	font-size: 1.1rem;
 	text-align: right;
-}
-
-#tweet-quote {
-	height: 38px;
 }
 
 #buttons {
 	text-align: right;
+}
+
+/* fix for difference in button height */
+#tweet-quote {
+	height: 38px;
+}
+
+.center-container {
+	display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75vh;
+  border: 2px solid #000;
+}
+
+.center {
+	margin: 0;
+	padding: 10%;
+  position: relative;
 }

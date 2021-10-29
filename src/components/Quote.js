@@ -26,10 +26,9 @@ class Quote extends React.Component {
 
 		return (
 			<div id="quote-box">
-				<div className="terminal-card">
-					<header>Random Quote Machine</header>
-					<div id="quote">
-						<p>"{text}"</p>
+				<div className="center-container">
+					<div className="center">
+						<p id="quote">"{text}"</p>
 						<p id="author">- {author}</p>
 					</div>
 				</div>
