@@ -28,7 +28,7 @@ class Quote extends React.Component {
 			<div id="quote-box">
 				<div className="center-container">
 					<div className="center">
-						<p id="quote">"{text}"</p>
+						<p id="text">"{text}"</p>
 						<p id="author">- {author}</p>
 					</div>
 				</div>
