@@ -16,7 +16,6 @@
     "redux": "^4.1.1",
     "redux-thunk": "^2.4.0",
     "save-dev": "^0.0.1-security",
-    "terminal.css": "^0.7.2",
     "url-parse": "^1.5.3",
     "web-vitals": "^1.1.2"
   },
